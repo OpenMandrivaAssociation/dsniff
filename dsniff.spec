@@ -16,7 +16,7 @@ Patch5:		dsniff-2.4b2-multiple_intf.diff
 Patch6:		dsniff-2.4b2-urlsnarf_zeropad.diff
 Patch7:		dsniff-2.4b2-openssl098.diff
 Group:		Monitoring
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:	db-devel
 #BuildRequires:	glibc-static-devel
 BuildRequires:	libnet1.1.2-devel
