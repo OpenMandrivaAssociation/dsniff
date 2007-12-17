@@ -24,7 +24,6 @@ BuildRequires:	libnids-devel
 BuildRequires:	libpcap-devel
 BuildRequires:	openssl-devel
 #BuildRequires:	autoconf2.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Tools to audit network and to demonstrate the insecurity of cleartext
