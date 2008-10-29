@@ -1,7 +1,7 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.7
+Release:	%mkrel 0.b2.8
 URL:		http://www.monkey.org/~dugsong/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
@@ -24,7 +24,7 @@ BuildRequires:	libnids-devel
 BuildRequires:	libpcap-devel
 BuildRequires:	openssl-devel
 #BuildRequires:	autoconf2.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Tools to audit network and to demonstrate the insecurity of cleartext
