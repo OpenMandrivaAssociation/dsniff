@@ -1,12 +1,11 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.8
+Release:	%mkrel 0.b2.9
 URL:		http://www.monkey.org/~dugsong/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
 Source0:	http://www.monkey.org/~dugsong/%{name}/%{name}-%{version}b2.tar.bz2
-Source1:	dsniff.bash-completion.bz2
 Patch0:		dsniff-2.4-slist.patch
 Patch1:		dsniff-2.4-db4.diff
 Patch2:		dsniff-2.4-missing-header.diff
@@ -76,9 +75,6 @@ rm -rf %{buildroot}
 
 chmod 644 CHANGES README TODO
 
-install -d -m 755 $RPM_BUILD_ROOT%{_sysconfdir}/bash_completion.d
-install -m 644 %{name}.bash-completion $RPM_BUILD_ROOT%{_sysconfdir}/bash_completion.d/%{name}
-
 %clean
 rm -rf %{buildroot}
 
@@ -86,7 +82,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc CHANGES README TODO
 %config(noreplace) %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/bash_completion.d/%{name}
 %exclude %{_sbindir}/webspy
 %exclude %{_mandir}/man8/webspy.*
 %{_sbindir}/*
