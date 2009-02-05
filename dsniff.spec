@@ -8,7 +8,7 @@ License:	BSD
 Source0:	http://www.monkey.org/~dugsong/%{name}/%{name}-%{version}b2.tar.bz2
 Patch0:		dsniff-2.4-slist.patch
 Patch1:		dsniff-2.4-db4.diff
-Patch2:		dsniff-2.4-missing-header.diff
+Patch2:		dsniff-2.4b2-missing-header.diff
 Patch3:		dsniff-2.4b2-mailsnarf_corrupt.diff
 Patch4:		dsniff-2.4b2-pcap_read_dump.diff
 Patch5:		dsniff-2.4b2-multiple_intf.diff
@@ -53,16 +53,11 @@ your local X display ahead of time.
 %patch6 -p0
 %patch7 -p0
 
-bzcat %{SOURCE1} > %{name}.bash-completion
-
 #lib64 fixes
 perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
 perl -pi -e 's|/lib\ |/%{_lib}\ |g' configure*
 
 %build
-#rm -f configure
-#autoheader-2.13; aclocal-1.4; autoconf-2.13
-
 %configure \
     --libdir="%{_sysconfdir}/%{name}"
 
