@@ -1,8 +1,8 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.11
-URL:		http://www.monkey.org/~dugsong/
+Release:	%mkrel 0.b2.12
+URL:		http://www.monkey.org/~dugsong/%{name}/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
 Source0:	http://www.monkey.org/~dugsong/%{name}/%{name}-%{version}b2.tar.bz2
@@ -14,6 +14,11 @@ Patch4:		dsniff-2.4b2-pcap_read_dump.diff
 Patch5:		dsniff-2.4b2-multiple_intf.diff
 Patch6:		dsniff-2.4b2-urlsnarf_zeropad.diff
 Patch7:		dsniff-2.4b2-openssl098.diff
+# patch to fix stack smahing seen on i586.
+# debugging lead to a problem regarding buf array
+# patch not sent upstream since the version do not seems to come from him 
+Patch8:     dsniff-2.4-fix_stack_smashing_tcpkill.diff
+ 
 Group:		Monitoring
 BuildRequires:	X11-devel
 BuildRequires:	db-devel
