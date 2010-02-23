@@ -56,6 +56,7 @@ your local X display ahead of time.
 %patch5 -p1
 %patch6 -p0
 %patch7 -p0
+%patch8 -p0 
 
 #lib64 fixes
 perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
