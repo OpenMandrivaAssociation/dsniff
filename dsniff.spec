@@ -1,7 +1,7 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.12
+Release:	%mkrel 0.b2.13
 URL:		http://www.monkey.org/~dugsong/%{name}/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
@@ -18,6 +18,8 @@ Patch7:		dsniff-2.4b2-openssl098.diff
 # debugging lead to a problem regarding buf array
 # patch not sent upstream since the version do not seems to come from him 
 Patch8:     dsniff-2.4-fix_stack_smashing_tcpkill.diff
+# debian #372536
+Patch9:		dsniff-checksum.patch
  
 Group:		Monitoring
 BuildRequires:	X11-devel
@@ -57,6 +59,7 @@ your local X display ahead of time.
 %patch6 -p0
 %patch7 -p0
 %patch8 -p0 
+%patch9 -p1
 
 #lib64 fixes
 perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
