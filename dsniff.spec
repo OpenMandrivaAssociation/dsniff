@@ -1,7 +1,7 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.14
+Release:	%mkrel 0.b2.15
 URL:		http://www.monkey.org/~dugsong/%{name}/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
