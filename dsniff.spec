@@ -22,13 +22,13 @@ Patch8:     dsniff-2.4-fix_stack_smashing_tcpkill.diff
 Patch9:		dsniff-checksum.patch
  
 Group:		Monitoring
-BuildRequires:	X11-devel
-BuildRequires:	db-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libxmu-devel
 BuildRequires:	net-devel >= 1.1.3
 BuildRequires:	libnids-devel
-BuildRequires:	libpcap-devel
+BuildRequires:	db4-devel
 BuildRequires:	openssl-devel
-#BuildRequires:	autoconf2.1
+BuildRequires:	pcap-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -66,7 +66,7 @@ perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
 perl -pi -e 's|/lib\ |/%{_lib}\ |g' configure*
 
 %build
-%configure \
+%configure2_5x \
     --libdir="%{_sysconfdir}/%{name}"
 
 %make
