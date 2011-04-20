@@ -1,7 +1,7 @@
 Summary:	Network audit tools
 Name:		dsniff
 Version:	2.4
-Release:	%mkrel 0.b2.15
+Release:	%mkrel 0.b2.16
 URL:		http://www.monkey.org/~dugsong/%{name}/
 License:	BSD
 # http://packetstormsecurity.nl/sniffers/dsniff/dsniff-2.4b2.tar.gz
@@ -26,7 +26,7 @@ BuildRequires:	libx11-devel
 BuildRequires:	libxmu-devel
 BuildRequires:	net-devel >= 1.1.3
 BuildRequires:	libnids-devel
-BuildRequires:	db4-devel
+BuildRequires:	db-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pcap-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
