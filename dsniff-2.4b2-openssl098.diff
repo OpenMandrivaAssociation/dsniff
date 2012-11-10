@@ -1,0 +1,11 @@
+--- sshcrypto.c	2000-07-31 05:40:11.000000000 +0200
++++ sshcrypto.c.oden	2005-12-01 05:25:42.000000000 +0100
+@@ -14,6 +14,8 @@
+ 
+ #include <sys/types.h>
+ #include <openssl/ssl.h>
++#include <openssl/blowfish.h>
++#include <openssl/des.h>
+ 
+ #include <err.h>
+ #include <stdio.h>

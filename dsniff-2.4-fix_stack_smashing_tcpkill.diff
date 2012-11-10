@@ -1,0 +1,13 @@
+Index: tcpkill.c
+===================================================================
+--- tcpkill.c
++++ tcpkill.c	2010-02-23 01:10:12.918337598 +0100
+@@ -45,7 +45,7 @@
+ {
+ 	struct libnet_ipv4_hdr *ip;
+ 	struct libnet_tcp_hdr *tcp;
+-	u_char ctext[64], buf[LIBNET_IPV4_H + LIBNET_TCP_H];
++	u_char ctext[64], buf[LIBNET_IPV4_H + LIBNET_TCP_H + 1];
+ 	u_long seq;
+ 	u_short win;
+ 	int i, *sock, len;

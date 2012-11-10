@@ -1,0 +1,22 @@
+diff -Naur --exclude '*.orig' dsniff-2.4b2-slist/msgsnarf.c dsniff-2.4b2-missing-header/msgsnarf.c
+--- dsniff-2.4b2-slist/msgsnarf.c	2009-02-05 19:11:09.000000000 +0100
++++ dsniff-2.4b2-missing-header/msgsnarf.c	2009-02-05 19:12:20.000000000 +0100
+@@ -23,6 +23,7 @@
+ #include <nids.h>
+ #include <pcap.h>
+ #include <pcaputil.h>
++#include <time.h>
+ 
+ #include "slist.h"
+ #include "buf.h"
+diff -Naur --exclude '*.orig' dsniff-2.4b2-slist/sshow.c dsniff-2.4b2-missing-header/sshow.c
+--- dsniff-2.4b2-slist/sshow.c	2009-02-05 19:10:45.000000000 +0100
++++ dsniff-2.4b2-missing-header/sshow.c	2009-02-05 19:12:20.000000000 +0100
+@@ -15,6 +15,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/times.h>
++#include <time.h>
+ 
+ #include <netinet/in_systm.h>
+ #include <netinet/in.h>

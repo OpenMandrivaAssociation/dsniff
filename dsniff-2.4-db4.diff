@@ -1,0 +1,114 @@
+diff -Naur dsniff-2.4b2/configure dsniff-2.4b2.oden/configure
+--- dsniff-2.4b2/configure	2000-07-31 05:40:10.000000000 +0200
++++ dsniff-2.4b2.oden/configure	2005-06-11 15:59:22.342073231 +0200
+@@ -2960,21 +2960,12 @@
+ else
+    for dir in ${prefix}/BerkeleyDB.3.1 ${prefix}/BerkeleyDB.3.0 \
+ 	     ${prefix}/BerkeleyDB ${prefix}/db ${prefix}; do
+-    if test -f ${dir}/include/db_185.h; then
++    if test -f ${dir}/include/db53/db_185.h; then
+        cat >> confdefs.h <<\EOF
+ #define HAVE_DB_185_H 1
+ EOF
+ 
+-       DBINC="-I${dir}/include"
+-       DBLIB="-L${dir}/lib -ldb"
+-       have_db=yes
+-       break
+-    elif test -f ${dir}/include/db.h; then
+-       cat >> confdefs.h <<\EOF
+-#define HAVE_DB_H 1
+-EOF
+-
+-       DBINC="-I${dir}/include"
++       DBINC="-I${dir}/include/db53"
+        DBLIB="-L${dir}/lib -ldb"
+        have_db=yes
+        break
+@@ -2989,7 +2980,7 @@
+ 	DBINC="-I/usr/include/db2"
+ 	DBLIB="-ldb2"
+ 	have_db=yes
+-     elif test -f /usr/include/db_185.h; then
++     elif test -f /usr/include/db53/db_185.h; then
+         cat >> confdefs.h <<\EOF
+ #define HAVE_DB_185_H 1
+ EOF
+@@ -3015,7 +3006,7 @@
+ 
+ 
+ echo $ac_n "checking for libpcap""... $ac_c" 1>&6
+-echo "configure:3019: checking for libpcap" >&5
++echo "configure:3010: checking for libpcap" >&5
+ # Check whether --with-libpcap or --without-libpcap was given.
+ if test "${with_libpcap+set}" = set; then
+   withval="$with_libpcap"
+@@ -3063,7 +3054,7 @@
+ 
+ 
+ echo $ac_n "checking for libnet""... $ac_c" 1>&6
+-echo "configure:3067: checking for libnet" >&5
++echo "configure:3058: checking for libnet" >&5
+ # Check whether --with-libnet or --without-libnet was given.
+ if test "${with_libnet+set}" = set; then
+   withval="$with_libnet"
+@@ -3110,7 +3101,7 @@
+ 
+ 
+ echo $ac_n "checking for libnids""... $ac_c" 1>&6
+-echo "configure:3114: checking for libnids" >&5
++echo "configure:3105: checking for libnids" >&5
+ # Check whether --with-libnids or --without-libnids was given.
+ if test "${with_libnids+set}" = set; then
+   withval="$with_libnids"
+@@ -3152,9 +3143,9 @@
+ save_cppflags="$CPPFLAGS"
+ CPPFLAGS="$NIDSINC"
+ echo $ac_n "checking whether libnids version is good""... $ac_c" 1>&6
+-echo "configure:3156: checking whether libnids version is good" >&5
++echo "configure:3147: checking whether libnids version is good" >&5
+ cat > conftest.$ac_ext <<EOF
+-#line 3158 "configure"
++#line 3149 "configure"
+ #include "confdefs.h"
+ #include <nids.h>
+ EOF
+@@ -3173,7 +3164,7 @@
+ 
+ 
+ echo $ac_n "checking for OpenSSL""... $ac_c" 1>&6
+-echo "configure:3177: checking for OpenSSL" >&5
++echo "configure:3168: checking for OpenSSL" >&5
+ # Check whether --with-openssl or --without-openssl was given.
+ if test "${with_openssl+set}" = set; then
+   withval="$with_openssl"
+diff -Naur dsniff-2.4b2/configure.in dsniff-2.4b2.oden/configure.in
+--- dsniff-2.4b2/configure.in	2000-07-31 05:40:10.000000000 +0200
++++ dsniff-2.4b2.oden/configure.in	2005-06-11 15:58:07.172674367 +0200
+@@ -123,15 +123,9 @@
+   esac ],
+ [ for dir in ${prefix}/BerkeleyDB.3.1 ${prefix}/BerkeleyDB.3.0 \
+ 	     ${prefix}/BerkeleyDB ${prefix}/db ${prefix}; do
+-    if test -f ${dir}/include/db_185.h; then
++    if test -f ${dir}/include/db53/db_185.h; then
+        AC_DEFINE(HAVE_DB_185_H)
+-       DBINC="-I${dir}/include"
+-       DBLIB="-L${dir}/lib -ldb"
+-       have_db=yes
+-       break
+-    elif test -f ${dir}/include/db.h; then
+-       AC_DEFINE(HAVE_DB_H)
+-       DBINC="-I${dir}/include"
++       DBINC="-I${dir}/include/db53"
+        DBLIB="-L${dir}/lib -ldb"
+        have_db=yes
+        break
+@@ -143,7 +137,7 @@
+ 	DBINC="-I/usr/include/db2"
+ 	DBLIB="-ldb2"
+ 	have_db=yes
+-     elif test -f /usr/include/db_185.h; then
++     elif test -f /usr/include/db53/db_185.h; then
+         AC_DEFINE(HAVE_DB_185_H)
+         DBLIB="-ldb"
+         have_db=yes

@@ -1,0 +1,11 @@
+--- mailsnarf.c	2000-07-31 05:40:11.000000000 +0200
++++ mailsnarf.c.oden	2005-12-01 05:45:40.000000000 +0100
+@@ -178,7 +178,7 @@
+ 	if (smtp->state != SMTP_DATA) {
+ 		while ((i = buf_index(&buf, "\r\n", 2)) >= 0) {
+ 			line = buf_tok(&buf, NULL, i + 2);
+-			line->base[line->end] = '\0';
++			line->base[line->end-1] = '\0';
+ 			p = buf_ptr(line);
+ 			
+ 			if (strncasecmp(p, "RSET", 4) == 0) {

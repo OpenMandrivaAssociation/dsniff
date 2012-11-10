@@ -1,0 +1,11 @@
+--- urlsnarf.c	2000-07-31 05:40:11.000000000 +0200
++++ urlsnarf.c.oden	2005-12-01 05:54:59.000000000 +0100
+@@ -68,7 +68,7 @@
+ 		 t->tm_hour - gmt.tm_hour);
+ 	tz = hours * 60 + t->tm_min - gmt.tm_min;
+ 	
+-	len = strftime(tstr, sizeof(tstr), "%e/%b/%Y:%X", t);
++	len = strftime(tstr, sizeof(tstr), "%d/%b/%Y:%X", t);
+ 	if (len < 0 || len > sizeof(tstr) - 5)
+ 		return (NULL);
+ 	

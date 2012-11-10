@@ -1,0 +1,53 @@
+diff -Naur dsniff-2.4b2/arp.c dsniff-2.4b2.oden/arp.c
+--- dsniff-2.4b2/arp.c	2000-07-31 05:40:11.000000000 +0200
++++ dsniff-2.4b2.oden/arp.c	2005-12-01 05:52:39.000000000 +0100
+@@ -39,7 +39,7 @@
+ 
+ #ifdef BSD
+ int
+-arp_cache_lookup(in_addr_t ip, struct ether_addr *ether)
++arp_cache_lookup(in_addr_t ip, struct ether_addr *ether, const char* linf)
+ {
+ 	int mib[6];
+ 	size_t len;
+@@ -91,7 +91,7 @@
+ #endif
+ 
+ int
+-arp_cache_lookup(in_addr_t ip, struct ether_addr *ether)
++arp_cache_lookup(in_addr_t ip, struct ether_addr *ether, const char* lif)
+ {
+ 	int sock;
+ 	struct arpreq ar;
+@@ -99,7 +99,7 @@
+ 	
+ 	memset((char *)&ar, 0, sizeof(ar));
+ #ifdef __linux__
+-	strncpy(ar.arp_dev, "eth0", sizeof(ar.arp_dev));   /* XXX - *sigh* */
++	strncpy(ar.arp_dev, lif, strlen(lif));
+ #endif
+ 	sin = (struct sockaddr_in *)&ar.arp_pa;
+ 	sin->sin_family = AF_INET;
+diff -Naur dsniff-2.4b2/arp.h dsniff-2.4b2.oden/arp.h
+--- dsniff-2.4b2/arp.h	2000-07-31 05:40:11.000000000 +0200
++++ dsniff-2.4b2.oden/arp.h	2005-12-01 05:52:39.000000000 +0100
+@@ -11,6 +11,6 @@
+ #ifndef _ARP_H_
+ #define _ARP_H_
+ 
+-int	arp_cache_lookup(in_addr_t ip, struct ether_addr *ether);
++int	arp_cache_lookup(in_addr_t ip, struct ether_addr *ether, const char* linf);
+ 
+ #endif /* _ARP_H_ */
+diff -Naur dsniff-2.4b2/arpspoof.c dsniff-2.4b2.oden/arpspoof.c
+--- dsniff-2.4b2/arpspoof.c	2000-07-31 05:40:11.000000000 +0200
++++ dsniff-2.4b2.oden/arpspoof.c	2005-12-01 05:52:39.000000000 +0100
+@@ -117,7 +117,7 @@
+ 	int i = 0;
+ 
+ 	do {
+-		if (arp_cache_lookup(ip, mac) == 0)
++		if (arp_cache_lookup(ip, mac, intf) == 0)
+ 			return (1);
+ #ifdef __linux__
+ 		/* XXX - force the kernel to arp. feh. */

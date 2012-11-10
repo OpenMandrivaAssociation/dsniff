@@ -1,0 +1,78 @@
+--- dnsspoof.c.orig	2001-03-15 09:33:03.000000000 +0100
++++ dnsspoof.c	2002-12-19 04:53:27.000000000 +0100
+@@ -25,6 +25,7 @@
+ #include <libnet.h>
+ #include <pcap.h>
+ 
++#include "slist.h"
+ #include "pcaputil.h"
+ #include "version.h"
+ 
+--- msgsnarf.c.orig	2001-03-15 09:33:04.000000000 +0100
++++ msgsnarf.c	2002-12-19 04:54:40.000000000 +0100
+@@ -24,6 +24,7 @@
+ #include <pcap.h>
+ #include <pcaputil.h>
+ 
++#include "slist.h"
+ #include "buf.h"
+ #include "decode.h"
+ #include "version.h"
+--- slist.h.orig	Thu Jan  1 01:00:00 1970
++++ slist.h	Thu Dec 21 00:07:48 2000
+@@ -0,0 +1,55 @@
++#ifndef SLIST_HEAD
++
++/*
++ * Singly-linked List definitions.
++ */
++#define SLIST_HEAD(name, type)						\
++struct name {								\
++	struct type *slh_first;	/* first element */			\
++}
++ 
++#define	SLIST_HEAD_INITIALIZER(head)					\
++	{ NULL }
++ 
++#define SLIST_ENTRY(type)						\
++struct {								\
++	struct type *sle_next;	/* next element */			\
++}
++ 
++/*
++ * Singly-linked List access methods.
++ */
++#define	SLIST_FIRST(head)	((head)->slh_first)
++#define	SLIST_END(head)		NULL
++#define	SLIST_EMPTY(head)	(SLIST_FIRST(head) == SLIST_END(head))
++#define	SLIST_NEXT(elm, field)	((elm)->field.sle_next)
++
++#define	SLIST_FOREACH(var, head, field)					\
++	for((var) = SLIST_FIRST(head);					\
++	    (var) != SLIST_END(head);					\
++	    (var) = SLIST_NEXT(var, field))
++
++/*
++ * Singly-linked List functions.
++ */
++#define	SLIST_INIT(head) {						\
++	SLIST_FIRST(head) = SLIST_END(head);				\
++}
++
++#define	SLIST_INSERT_AFTER(slistelm, elm, field) do {			\
++	(elm)->field.sle_next = (slistelm)->field.sle_next;		\
++	(slistelm)->field.sle_next = (elm);				\
++} while (0)
++
++#define	SLIST_INSERT_HEAD(head, elm, field) do {			\
++	(elm)->field.sle_next = (head)->slh_first;			\
++	(head)->slh_first = (elm);					\
++} while (0)
++
++#define	SLIST_REMOVE_HEAD(head, field) do {				\
++	(head)->slh_first = (head)->slh_first->field.sle_next;		\
++} while (0)
++
++#endif
++
++
