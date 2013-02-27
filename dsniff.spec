@@ -29,6 +29,7 @@ BuildRequires:	libnids-devel
 BuildRequires:	db-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pcap-devel
+BuildRequires:	tirpc-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
