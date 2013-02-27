@@ -69,6 +69,7 @@ perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
 perl -pi -e 's|/lib\ |/%{_lib}\ |g' configure*
 
 %build
+export LIBS="-ltirpc"
 %configure2_5x \
     --libdir="%{_sysconfdir}/%{name}"
 
