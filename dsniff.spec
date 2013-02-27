@@ -20,6 +20,7 @@ Patch7:		dsniff-2.4b2-openssl098.diff
 Patch8:     dsniff-2.4-fix_stack_smashing_tcpkill.diff
 # debian #372536
 Patch9:		dsniff-checksum.patch
+Patch10:	dsniff-2.4b2-tirpc.patch
  
 Group:		Monitoring
 BuildRequires:	libx11-devel
@@ -61,6 +62,7 @@ your local X display ahead of time.
 %patch7 -p0
 %patch8 -p0 
 %patch9 -p1
+%patch10 -p0
 
 #lib64 fixes
 perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
