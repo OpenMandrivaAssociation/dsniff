@@ -68,6 +68,10 @@ your local X display ahead of time.
 perl -pi -e 's|/lib/|/%{_lib}/|g' configure*
 perl -pi -e 's|/lib\ |/%{_lib}\ |g' configure*
 
+#fix perms
+chmod 644 *.h
+chmod 644 *.c
+
 %build
 export LIBS="-ltirpc"
 %configure2_5x \
