@@ -23,6 +23,11 @@ Patch9:		dsniff-checksum.patch
 Patch10:	dsniff-2.4b2-tirpc.patch
  
 Group:		Monitoring
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libx11-devel
 BuildRequires:	libxmu-devel
 BuildRequires:	net-devel >= 1.1.3
